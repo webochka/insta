@@ -1,0 +1,219 @@
+{{> header}}
+<div class="container-fluid">
+
+  <div class="profile">
+    <div class="u-mb-4">
+      <a class="btn btn-default btn-sm" href="/profile">
+        <i class="fa fa-arrow-left"></i>
+        <span>Profile</span>
+      </a>
+    </div>
+
+    <div class="profile__left">
+
+      <form class="profile-picture" id="profile-picture">
+        <div class="profile-picture__picture" {{#if photoURL}}style="background-image: url('{{ photoURL }}')"{{/if}}>
+          <label class="profile-picture__trigger" title="Change picture">
+            <span>Choose a new picture</span>
+            <input type="file" name="picture" accept="image/*">
+          </label>
+        </div>
+
+        <div class="profile-picture__error alert alert-danger"></div>
+
+        <div class="profile-picture__actions f f-gap-2 f-align-1-2">
+          <button class="btn btn-success btn-sm btn-block" data-action="save">
+            <i class="fa fa-upload"></i> Save
+          </button>
+
+          <button class="btn btn-danger btn-sm btn-block u-my-0" data-action="cancel">
+            <i class="fa fa-ban"></i> Cancel
+          </button>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped active"></div>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="profile__body" id="profile__body">
+
+      <div class="profile__errors alert alert-danger" hidden></div>
+
+      <form class="form panel panel-default" id="public-info" novalidate>
+        <header class="panel-heading">
+          <h3 class="panel-title">Public information</h3>
+        </header>
+
+        <div class="panel-body">
+
+          <div class="form-group">
+            <label>Username</label>
+            <div class="form-control"readonly>{{ username }}</div>
+          </div>
+
+          <div class="form-group">
+            <label>Display Name</label>
+            <input
+              type="text"
+              name="displayName"
+              class="form-control"
+              value="{{ displayName }}"
+              data-validators="displayName">
+              <span></span>
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+            <input
+              type="tel"
+              name="phoneNumber"
+              class="form-control"
+              value="{{ phoneNumber }}"
+              data-validators ="phoneNumber">
+              <span></span>
+          </div>
+
+          <div class="form-group">
+            <label>About me</label>
+            <textarea class="form-control" name="about" 
+            data-validators ="empty">{{ about }}</textarea>
+            <span></span>
+          </div>
+
+          <hr>
+
+          <div class="form-group">
+            <label>Twitter</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+              <input
+                type="text"
+                name="socialTwitter"
+                class="form-control"
+                value="{{ social.twitter }}" 
+                data-validators ="empty">
+                <span></span>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Facebook</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+              <input type="text"
+                name="socialFacebook"
+                class="form-control"
+                value="{{ social.facebook }}"
+                data-validators ="empty">
+                <span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Vkontakte</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-vk"></i></span>
+              <input
+                type="text"
+                name="socialVkontakte"
+                class="form-control"
+                value="{{ social.vkontakte }}"
+                data-validators ="empty">
+                <span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> Personal website</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+              <input
+                type="text"
+                name="socialWebsite"
+                class="form-control"
+                value="{{ social.website }}" 
+                data-validators ="empty">
+                <span></span>
+            </div>
+          </div>
+        </div>
+        <footer class="panel-footer">
+          <div class="f f-align-13-2">
+            {{> form-submit btn-text="Save"}}
+          </div>
+        </footer>
+      </form>
+
+
+
+      <form class="panel panel-default" id="changePassword" novalidate>
+        <header class="panel-heading">
+          <h3 class="panel-title">Change password</h3>
+        </header>
+        <div class="panel-body">
+
+         
+      <div class="form-group">
+         
+          <p>Current password</p>
+          <input
+              type="password"
+              name="passwordControl"
+              class="form-control"
+              value="{{ password }}">
+              <span class="text-danger"></span>
+          </div>
+                       
+          
+         <div class="form-group change_pasword--hidden">
+            <p>New password</p>
+            <input type="password" name="NewPassword" class="form-control" value="{{ password }}">
+            <span class="text-danger"></span>
+         </div>
+      </div>
+      
+       <footer class="panel-footer">
+           <div class="f f-align-13-2">
+               {{> form-submit btn-text="Save"}}
+            </div>
+        </footer>
+         
+       
+      </form>
+
+      <form class="panel panel-danger" id="delete-profile">
+        <header class="panel-heading">
+          <h3 class="panel-title">
+            Delete account
+          </h3>
+        </header>
+        <div class="panel-body">
+          <p class="text-danger">
+            Attention!!!
+            Once you delete your account, there is no going back.
+            Please be certain.
+          </p>
+          <p>For confirm account deletion you should enter your username into this field:</p>
+          <div class="row">
+            <div class="col-xs-9 u-pr-0">
+              <input type="hidden" value="{{ username }}" name="username">
+              <div class="form-group u-mb-0">
+                <input type="text" class="form-control" name="usernameConfirm">
+                <span></span>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <button class="btn btn-danger btn-block">Delete</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

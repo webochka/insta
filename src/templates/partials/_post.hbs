@@ -1,0 +1,50 @@
+{{!-- <article class="post"> --}}
+<header class="post__header">
+  <div class="post__author">
+    <div class="post__author-pic">
+      {{#if author.photoURL}}
+      <img src="{{ author.photoURL }}" alt="Users avatar picture">
+      {{else}}
+      <img src="img/user.svg" alt="Default users avatar picture">
+      {{/if}}
+    </div>
+    <span class="post__author-name">{{ author.username }}</span>
+  </div>
+  <span class="post__time">{{ created }}</span>
+</header>
+
+<div class="post__content">
+  <img src="{{ url }}" alt="{{ name }}">
+</div>
+
+<footer class="post__footer">
+  {{#if comments}}
+  <ul class="post__comments-list">
+    {{#each comments}}
+     <li class="comment" data-comment="{{ this.id }}">
+      <span class="comment__author">{{ this.author }}</span>
+      <span class="comment__text">{{ this.value }}</span>
+      <small class="comment__time">{{ this.created }}</small>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+  <div class="f f-align-1-2">
+    <button class="post__like">
+      <span class="fa {{#if liked}}fa-heart{{else}}fa-heart-o{{/if}}"></span>
+      {{#if likesCount}}
+      <span>{{ likesCount }}</span>
+      {{/if}}
+    </button>
+    <form class="post__add-comment">
+      <input type="text" name="comment" placeholder="Add a comment...">
+    </form>
+    {{#if isOwner}}
+    <button class="post__delete btn btn-danger btn-xs" title="Delete">
+      <span class="fa fa-trash"></span>
+      <span>Delete</span>
+    </button>
+    {{/if}}
+  </div>
+</footer>
+{{!-- </article> --}}

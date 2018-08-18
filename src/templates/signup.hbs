@@ -1,0 +1,48 @@
+{{> header}}
+<div class="container-fluid">
+
+  <form id="signup-form" class="form">
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+
+        <ul id="errors" class="list-group" hidden></ul>
+
+        <div class="form-group">
+          <label class="control-label">Email</label>
+          <input type="text" class="form-control" name="email">
+          <span class="help-block"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Username</label>
+          <input type="text" class="form-control" name="username">
+          <span class="help-block"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Name</label>
+          <input type="text" class="form-control" name="displayName">
+          <span class="help-block"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Password</label>
+          <input type="password" class="form-control" name="password">
+          <span class="help-block"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Confirm password</label>
+          <input type="password" class="form-control" name="passwordConfirm">
+          <span class="help-block"></span>
+        </div>
+
+        {{> form-submit btn-text="Sign Up"}}
+
+      </div>
+    </div>
+
+  </form>
+
+</div>

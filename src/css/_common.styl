@@ -1,0 +1,50 @@
+body
+  min-width 800px
+  background $main-bg-color
+
+$font-awesome
+  display inline-block
+  font normal normal normal 14px/1 FontAwesome
+  font-size inherit
+  text-rendering auto
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+fa-icon($code)
+  @extend $font-awesome
+  content "\" + $code
+
+.btn
+  for pair in (xs 5) (sm 7) (md 10) (lg 14)
+    &-mw-{pair[0]}
+      min-width unit(pair[1], 'em')
+
+.container-fluid
+  padding-top 80px
+  padding-bottom 20px
+  max-width 960px
+
+.dropdown-toggle
+  .img-circle
+    display inline-block
+    width 30px
+    height 30px
+    margin -10px 5px -10px 0
+    background #FFF no-repeat center
+    background-size cover
+
+.logotype
+  display inline-block
+  height 1em
+  width 1em
+  background embedurl('../img/logotype.svg', 'utf8') no-repeat center
+  background-size contain
+
+  .navbar-brand &
+    font-size 30px
+    margin-top ceil((@font-size * -0.167))
+
+.feed
+  max-width 600px
+  margin auto
+  padding 70px 0 20px

@@ -1,0 +1,213 @@
+.editor
+  $this     = selector()
+  $shadow-w = 15px
+
+  shadow($angle = 90deg)
+    background linear-gradient($angle, $main-bg-color 0, transparent 100%)
+
+  overlay()
+    content ""
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+
+  &
+    max-width 600px
+    margin auto
+
+  &__canvas-container
+    display none
+    width 100%
+    position relative
+
+    canvas
+      display block
+      width 100%
+      height auto
+
+    .fa
+      color white
+      position absolute
+      top 50%
+      left 50%
+      margin -0.5em 0 0 -0.5em
+
+    &:before
+      overlay()
+      background alpha(black, 0.7)
+      transition all 0.3s ease
+
+    &:before
+    .fa
+      visibility hidden
+      opacity 0
+
+  &__uploader
+    display flex
+    align-items center
+    justify-content center
+    height 400px
+    width 100%
+    margin 0
+    border 8px dashed
+    color #CCC
+    font-size 26px
+    cursor pointer
+
+    &-inner
+      position relative
+
+    .fa-picture-o
+      display block
+      font-size 6em
+
+    .fa-plus
+      position absolute
+      top 0
+      right -1em
+      font-size 2em
+
+    input[type="file"]
+      display none
+
+  &__caption
+    margin 8px 0
+    display none
+
+  &__presets
+    position relative
+    display none
+    margin-top 24px
+    white-space nowrap
+    font-size 0
+    margin 24px 0 0
+
+    &:before
+    &:after
+      content ""
+      position absolute
+      z-index 2
+      top 0
+      bottom 0
+      width $shadow-w
+
+    &:before
+      left 0
+      shadow()
+
+    &:after
+      right 0
+      shadow(-90deg)
+
+    &-track
+      font-size 0
+      overflow auto
+      +scrollbar()
+        width 2px
+        height 2px
+        background alpha(#ccc, 0.2)
+      +scrollbar-thumb()
+        background #ccc
+
+    &-item
+      display inline-block
+      vertical-align top
+      position relative
+      width 100px
+      height 100px
+      font-size 12px
+      background white no-repeat center
+      background-size cover
+      outline none
+      border 1px solid #ccc
+      color white
+      font-size 13px
+      overflow hidden
+
+      > *
+        position relative
+        z-index 1
+
+      > span
+        display inline-block
+        transform scale(2) translateZ(0)
+        opacity 0
+        transition all 0.5s ease
+
+      &:before
+        overlay()
+        z-index 0
+        background black
+        opacity 0.8
+        transition all 0.3s ease
+        opacity 0
+
+      &:after
+        position absolute
+        bottom 8px
+        right 8px
+        font-size 20px
+        fa-icon('f00c')
+        color #5CB85C
+        transition all 0.3s ease
+        transform scale(0)
+        visibility hidden
+
+      &.is-active
+      &:hover
+        > span
+          transform none
+          opacity 1
+
+        &:before
+          transition-delay 0.1s
+          opacity 0.7
+
+      &.is-active
+        &:after
+          transform none
+          visibility visible
+
+      &:not(:last-child)
+        border-right none
+
+  &__reset
+    display none
+    + .btn
+      margin-top 0
+
+  &__upload
+    display none
+
+  &__progress
+    display none
+    margin 12px 0 0
+
+  &.has-image
+    {$this}__uploader
+      display none
+
+    {$this}__canvas-container,
+    {$this}__caption,
+    {$this}__presets,
+    {$this}__reset,
+    {$this}__upload
+      display block
+
+  &.is-busy
+    {$this}__canvas-container
+      &:before
+      .fa
+        visibility visible
+        opacity 1
+
+  &.is-uploading
+    {$this}__controls,
+    {$this}__presets,
+    {$this}__caption
+      display none
+
+    {$this}__progress
+      display block

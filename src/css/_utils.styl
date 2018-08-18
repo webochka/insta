@@ -1,0 +1,96 @@
+.u
+  // margins and paddings
+  for $i in 0..10
+    $gap = $base-gap * $i
+
+    &-mt-{$i},
+    &-my-{$i},
+    &-m-{$i}
+      margin-top $gap
+
+    &-mb-{$i},
+    &-my-{$i},
+    &-m-{$i}
+      margin-bottom $gap
+
+    &-ml-{$i},
+    &-mx-{$i},
+    &-m-{$i}
+      margin-left $gap
+
+    &-mr-{$i},
+    &-mx-{$i},
+    &-m-{$i}
+      margin-right $gap
+
+    &-pt-{$i},
+    &-py-{$i},
+    &-p-{$i}
+      padding-top $gap
+
+    &-pb-{$i},
+    &-py-{$i},
+    &-p-{$i}
+      padding-bottom $gap
+
+    &-pl-{$i},
+    &-px-{$i},
+    &-p-{$i}
+      padding-left $gap
+
+    &-pr-{$i},
+    &-px-{$i},
+    &-p-{$i}
+      padding-right $gap
+
+  &-mx-auto
+    margin-left auto
+    margin-right auto
+
+  // text utitlites
+  &-text
+
+    &-nowrap
+      white-space nowrap
+
+    &-upper
+      text-transform uppercase
+
+    &-capital
+      text-transform capitalize
+
+    &-right
+      text-align right
+
+    &-center
+      text-align center
+
+    &-left
+      text-align left
+
+  // gaps
+  /$v-gap-container
+    > *:first-child
+      margin-top 0
+    > *:last-child
+      margin-bottom 0
+
+  for $i in 1..10
+    &-v-gap-{$i}
+      $gap = $base-gap * $i
+      @extend $v-gap-container
+      > *
+        margin-top $gap
+        margin-bottom $gap
+
+  for $i in 1..10
+    &-h-gap-{$i}
+      $gap = $base-gap * $i
+      margin-left - $gap
+      > *
+        margin-left $gap
+
+  // display
+  for $prop in block inline-block inline
+    &-{$prop}
+      display $prop

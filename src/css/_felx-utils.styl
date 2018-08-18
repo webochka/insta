@@ -1,0 +1,85 @@
+/**
+ *  Alignment
+ *
+ *  1-1    2-1    3-1
+ *  1-2    2-2    3-2
+ *  1-22   2-22   3-22
+ *  1-3    2-3    3-3
+ */
+
+flex-alignment($base = 'f-align')
+  {$base}-1-1,
+  {$base}-1-2,
+  {$base}-1-3
+    justify-content flex-start
+
+  {$base}-2-1,
+  {$base}-2-2,
+  {$base}-2-3
+    justify-content center
+
+  {$base}-3-1,
+  {$base}-3-2,
+  {$base}-3-3
+    justify-content flex-end
+
+  {$base}-13-1,
+  {$base}-13-2,
+  {$base}-13-3
+    justify-content space-between
+
+  {$base}-1-1,
+  {$base}-2-1,
+  {$base}-3-1
+    align-items flex-start
+
+  {$base}-1-2,
+  {$base}-2-2,
+  {$base}-3-2
+    align-items center
+
+  {$base}-1-22,
+  {$base}-2-22,
+  {$base}-3-22
+    align-items baseline
+
+  {$base}-1-3,
+  {$base}-2-3,
+  {$base}-3-3
+    align-items flex-end
+
+f-align($x = 1, $y = 1)
+  if $x is 2
+    $x = center
+  else if $x is 3
+    $x = flex-end
+  else if $x is 13
+    $x = space-between
+  else
+    $x = flex-start
+
+  if $y is 2
+    $y = center
+  else if $y is 22
+    $y = baseline
+  else if $y is 3
+    $y = flex-end
+  else if $y is 13
+    $y = stretch
+  else
+    $y = flex-start
+
+  display flex
+  justify-content $x
+  align-items $y
+
+
+flex-gap($mult = 1, $base = $base-gap)
+  $half-gap = $base * $mult * 0.5
+
+  margin-left: - $half-gap
+  margin-right: - $half-gap
+
+  > *
+    margin-left $half-gap
+    margin-right $half-gap

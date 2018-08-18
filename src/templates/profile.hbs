@@ -1,0 +1,139 @@
+{{> header}}
+<div class="container-fluid">
+
+  <div class="container">
+    {{#with user}}
+    <form class="profile" id="edit-profile">
+      <div class="profile__left">
+        <div class="profile__pic" {{#if photoURL}} style="background-image: url('{{ photoURL }}')"{{/if}}>
+          <label class="profile__pic-uploader" title="Change picture">
+            <input type="file" name="picture" accept="image/*">
+          </label>
+        </div>
+      </div>
+
+      <div class="profile__body">
+
+        <div class="profile__errors alert alert-danger" hidden></div>
+
+        <div class="panel panel-default">
+          <header class="panel-heading">
+            <h3 class="panel-title">Common info</h3>
+          </header>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" value="{{ displayName }}" readonly>
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <div class="form-control" readonly>{{ email }}</div>
+            </div>
+
+            <div class="form-group">
+              <label>UID</label>
+              <div class="form-control" readonly>{{ uid }}</div>
+            </div>
+
+         
+
+          <div class="form-group">
+              <label>Phone number</label>
+              <div class="form-control" readonly> {{phoneNumber}} </div>
+          </div>
+          
+
+          <div class="form-group">
+            <label>About me</label>
+            <textarea class="form-control" name="about" readonly>{{ about }}</textarea>
+          </div>
+      
+          <div class="form-group">
+            <label>Twitter</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+              <div  class="form-control">
+              {{#if socialTwitter}}
+              <a> https://twitter.com/{{socialTwitter}}</a>
+               {{/if}}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Facebook</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+               <div  class="form-control">
+               {{#if socialFacebook}}
+                <a> https://www.facebook.com/{{ socialFacebook }}</a>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label>Vkontakte</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-vk"></i></span>
+               <div  class="form-control">
+              {{#if socialVkontakte}}
+              <a> https://vk.com/{{socialVkontakte}}</a>
+               {{/if}}
+              </div>
+            </div>
+          </div>
+      
+
+        <div class="form-group">
+            <label> Personal website</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+               <div  class="form-control">
+              <a><{{ socialWebsite }}a/>
+              </div>
+          </div>
+        </div>
+
+  </div>
+
+          <div class="panel-footer">
+
+            <div class="profile__actions">
+              <button class="btn btn-default btn-mw-sm" data-profile-action="edit">
+                <i class="fa fa-pencil"></i>
+                <span>Edit</span>
+              </button>
+            </div>
+
+            <div class="profile__actions profile__actions--edit">
+              <div class="f f-gap-3 f-align-1-2">
+                <button class="btn btn-primary btn-mw-sm" data-profile-action="save">
+                  <i class="fa fa-trash"></i>
+                  <span>Save</span>
+                </button>
+
+                <button class="btn btn-default btn-mw-sm" data-profile-action="cancel">
+                  <i class="fa fa-trash"></i>
+                  <span>Cancel</span>
+                </button>
+
+                <i class="fa fa-spinner fa-lg fa-spin"></i>
+              </div>
+
+              <button class="btn btn-danger btn-mw-sm" data-profile-action="delete">
+                <i class="fa fa-trash"></i>
+                <span>Delete account</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+    {{/with}}
+  </div>
+
+</div>

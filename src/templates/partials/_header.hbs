@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header__inner">
+
+    <div class="header__left">
+      <a href="/" class="header__logo logotype">
+        <span class="sr-only">Instaprjct</span>
+      </a>
+      {{#if user}}
+      <a href="/add" class="btn btn-default btn-sm">
+        <i class="fa fa-plus"></i>
+        <span>Add photo</span>
+      </a>
+      {{/if}}
+    </div>
+
+    {{#if profile}}
+    <div class="header-user dropdown">
+      <div class="header-user__main" data-toggle="dropdown">
+        <span class="header-user__pic"
+              {{#if profile.photoURL}}style="background-image:url('{{ profile.photoURL }}')"{{/if}}>
+        </span>
+        {{ profile.username }}
+        <span class="caret"></span>
+      </div>
+
+      <ul class="dropdown-menu">
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/profile/edit">Edit profile</a></li>
+        <li class="divider"></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+    {{else}}
+    <div class="header__login">
+      <a href="/login" class="btn btn-default btn-sm btn-mw-sm">Log In</a>
+      <span>or</span>
+      <a href="/signup" class="btn btn-primary btn-sm btn-mw-sm">Sign Up</a>
+    </div>
+    {{/if}}
+
+  </div>
+</header>

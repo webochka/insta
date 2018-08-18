@@ -1,0 +1,25 @@
+.form
+  .form-group
+    .text-danger
+      display inline-block
+      margin-top 3px
+
+.form-submit
+  .fa-circle-o-notch
+  .fa-spin
+  .text-success
+  .text-danger
+    display none
+
+  .form.is-loading &
+    .fa-circle-o-notch
+    .fa-spin
+      display block
+
+  .form.has-submit-error &
+    .text-danger
+      display block
+
+  .form.has-submit-success &
+    .text-success
+      display block

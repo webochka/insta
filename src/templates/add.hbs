@@ -1,0 +1,47 @@
+{{> header}}
+<div class="container-fluid">
+
+  <div id="editor" class="editor">
+    <div class="editor__canvas-container">
+      <i class="fa fa-spinner fa-4x fa-spin"></i>
+    </div>
+
+    <label class="editor__uploader" title="Upload picture">
+      <span class="editor__uploader-inner">
+        <i class="fa fa-picture-o"></i>
+        <i class="fa fa-plus"></i>
+      </span>
+      <input type="file" accept="image/*">
+    </label>
+
+    <div class="editor__presets">
+      <div class="editor__presets-track">
+        {{#each filters}}
+        <button
+          class="editor__presets-item"
+          data-filter="{{ this }}"
+          style="background-image:url('img/filters/{{ this }}.png')">
+          <span>{{ this }}</span>
+        </button>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="editor__caption form-group">
+      <textarea class="form-control" name="caption" placeholder="Caption..."></textarea>
+    </div>
+
+    <div class="editor__controls f f-gap-1 u-mt-2">
+      <button class="editor__reset btn btn-default btn-block">Reset</button>
+      <button class="editor__upload btn btn-success btn-block">
+        <i class="fa fa-upload"></i> <span>Upload</span>
+      </button>
+    </div>
+
+    <div class="editor__progress progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 40%"></div>
+    </div>
+
+  </div>
+
+</div>

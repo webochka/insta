@@ -1,0 +1,61 @@
+.header
+  position fixed
+  left 0
+  right 0
+  background alpha($main-bg-color, 0.9)
+  z-index 100
+  margin 0 0 30px
+
+  &__inner
+    display flex
+    justify-content space-between
+    align-items center
+    max-width 960px
+    margin auto
+    padding 10px 15px
+    box-shadow 0 7px 10px -7px alpha(black, 0.08)
+
+  &__left
+    display flex
+    align-items center
+
+    > *
+      margin-right 12px
+
+  &__logo
+    font-size 30px
+
+  &__login
+    display flex
+    align-items center
+    > *
+      margin-left 8px
+      &:first-child
+        margin-left 0
+
+  &-user
+    position relative
+
+    &__main
+      display flex
+      align-items center
+      cursor pointer
+
+      &:hover
+        color #37A8F8
+
+    &__pic
+      display inline-block
+      width 30px
+      height 30px
+      margin-right 10px
+      background #FFF url('/img/user.svg') no-repeat center
+      background-size cover
+      border-radius 50%
+
+    .dropdown-menu
+      right 0
+      left auto
+
+    .caret
+      margin-left 8px

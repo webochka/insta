@@ -1,0 +1,49 @@
+{{> header}}
+<div class="container-fluid">
+
+  {{#with profile}}
+  <div class="profile profile--show">
+    <div class="profile__pic"{{#if photoURL}} style="background-image: url('{{ photoURL }}')"{{/if}}></div>
+
+    <p class="profile__name">
+      {{#if displayName}}
+      {{ displayName }} <br> <small>({{ username }})</small>
+      {{else}}
+      {{ username }}
+      {{/if}}
+    </p>
+
+    {{#if publicEmail}}
+    <p class="profile__email">
+      <a href="mailto:{{ email }}"><i class="fa fa-envelope-o"></i> {{ email }}</a>
+    </p>
+    {{/if}}
+
+    {{#if phoneNumber}}
+    <p class="profile__phone">
+      <a href="tel:{{ phoneNumber }}"><i class="fa fa-phone"></i> {{ phoneNumber }}</a>
+    </p>
+    {{/if}}
+
+    {{#if about}}
+    <p class="profile__about">{{ about }}</p>
+    {{/if}}
+
+    <ul class="profile__social">
+      {{#each social as |v k|}}
+      {{#if v}}
+      <li><a href="{{ socialLinkFor k v }}" target="_blank" title="{{ socialLinkFor k v }}">
+        <i class="{{ socialIconFor k }}"></i>
+      </a></li>
+      {{/if}}
+      {{/each}}
+    </ul>
+
+    <a href="/profile/edit" class="btn btn-default">
+      <i class="fa fa-pencil"></i>
+      <span>Edit profile</span>
+    </a>
+  </div>
+  {{/with}}
+
+</div>

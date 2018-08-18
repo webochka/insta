@@ -1,0 +1,227 @@
+.change_pasword--hidden 
+  display: none
+
+.change_pasword
+  display: block
+
+.profile
+  $this = selector()
+  $pic-size = 200px
+
+  max-width 800px
+  margin auto
+  clearfix()
+
+  &__left
+    float left
+    text-align center
+    flex 0 1 auto
+    width $pic-size
+
+    .btn-block
+      margin-top 0
+
+  &__body
+    float right
+    width 800px - $pic-size - 20px
+
+  &__pic
+    position relative
+    width $pic-size
+    height $pic-size
+    border-radius 8px
+    border 2px solid #ccc
+    margin-bottom 12px
+    background-size cover
+    background-position center
+    overflow hidden
+
+    input[type="file"]
+      display none
+
+  &__pic-uploader
+    position absolute
+    top 0
+    left 0
+    margin 0
+    width 100%
+    height 100%
+    cursor pointer
+    border-radius 6px
+    background alpha(black, 0.8)
+    color white
+    opacity 0
+    transition all 0.3s ease
+
+    > span
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+
+    &:hover
+      opacity 1
+
+  &__name
+    font-size 24px
+    font-weight 500
+    margin 24px 0 12px
+
+  &__social
+    list-style none
+    margin 12px 0 0
+    padding 0
+    display flex
+    justify-content center
+    flex-wrap wrap
+    font-size 24px
+
+    &:not(:last-child)
+      margin-bottom 24px
+
+    > *
+      margin 0 20px 0 0
+      &:last-child
+        margin-right 0
+
+    a
+      color inherit
+
+    .fa-facebook
+      color: $brand-colors.facebook
+
+    .fa-vk
+      color: $brand-colors.vkontakte
+
+    .fa-twitter
+      color: $brand-colors.twitter
+
+  &__actions
+
+    &--edit
+      f-align(13, 2)
+      display none
+
+  &__uploader
+    f-align(2, 2)
+    position relative
+    width 100%
+    height 100%
+    margin 0
+    cursor pointer
+
+    input
+      position absolute
+      opacity 0
+
+  .fa-spinner
+    display none
+
+  .input-group-addon
+    min-width 45px
+
+  &--show
+    display block
+    max-width 360px
+    margin auto
+    text-align center
+
+    {$this}__pic
+      width 240px
+      height 240px
+      margin 0 auto 24px
+      box-shadow 0 0 20px 0 alpha(black, 0.2)
+
+
+  // edit mode
+  &.is-edit
+
+    {$this}__pic-uploader
+      display block
+
+    {$this}__actions
+      display none
+
+      &--edit
+        display flex
+
+  // loading state
+  &.is-loading
+
+    .fa-spinner
+      display block
+
+
+.profile-picture
+  $this = selector()
+  $pic-size = 200px
+
+  &__picture
+    position relative
+    width $pic-size
+    height $pic-size
+    border-radius 8px
+    border 2px solid #ccc
+    margin-bottom 12px
+    background-size cover
+    background-position center
+    overflow hidden
+
+  &__trigger
+    position absolute
+    top 0
+    left 0
+    margin 0
+    width 100%
+    height 100%
+    cursor pointer
+    border-radius 6px
+    background alpha(black, 0.8)
+    color white
+    opacity 0
+    transition all 0.3s ease
+
+    > span
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+
+    &:hover
+      opacity 1
+
+  &__actions
+    display none
+
+  &__error
+    display none
+    padding 5px
+    font-size 11px
+    text-align left
+
+  input[type="file"]
+    display none
+
+  .progress
+    display none
+
+
+  &.is-edited
+
+    {$this}__actions
+      display flex
+
+
+  &.is-loading
+
+    {$this}__actions
+      display none
+
+    .progress
+      display block
+
+
+  &.has-error
+
+    {$this}__error
+      display block
